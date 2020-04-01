@@ -1,3 +1,5 @@
+var dotenv = require("dotenv");
+dotenv.config();
 // Requiring necessary npm packages
 var dotenv = require("dotenv");
 dotenv.config();
