@@ -50,4 +50,22 @@ module.exports = function(app) {
       });
     }
   });
+  // GET route for getting all of the cases
+  app.get("/api/case", function(req, res) {
+    db.Case.findAll({}).then(function(dbresult) {
+      res.json(dbresult);
+    });
+  });
+
+  // POST route for saving a new case. You can create a case using the data on req.body
+  app.post("/api/case", function(req, res) {
+    console.log(req.body);
+    const { businessSegment, issueType } = req.body;
+    db.Case.create({
+      businessSegment,
+      issueType
+    }).then(function(dbCase) {
+      res.json(dbCase);
+    });
+  });
 };
