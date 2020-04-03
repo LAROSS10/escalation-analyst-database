@@ -60,12 +60,34 @@ module.exports = function(app) {
   // POST route for saving a new case. You can create a case using the data on req.body
   app.post("/api/case", function(req, res) {
     console.log(req.body);
-    const { businessSegment, issueType } = req.body;
+    const {
+      issueNumber,
+      requestor,
+      clientName,
+      financialImpact,
+      submitDate,
+      resolveDate
+    } = req.body;
     db.Case.create({
-      businessSegment,
-      issueType
+      issueNumber,
+      requestor,
+      clientName,
+      financialImpact,
+      submitDate,
+      resolveDate
     }).then(function(dbCase) {
       res.json(dbCase);
+    });
+  });
+
+  app.put("/api/case", function(req, res) {
+    console.log(req.body);
+    const { issueDescription, issueStatus } = req.body;
+    db.Case.update({
+      issueDescription,
+      issueStatus
+    }).then(function(res) {
+      res.json(res);
     });
   });
 };
