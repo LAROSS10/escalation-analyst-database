@@ -8,7 +8,7 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has signed in, send them to the form page
     if (req.user) {
-      res.redirect("/form");
+      res.redirect("/form2");
     }
     //otherwise send them to the login page to login
     res.sendFile(path.join(__dirname, "../public/login.html"));
@@ -17,14 +17,14 @@ module.exports = function(app) {
   app.get("/signup", function(req, res) {
     // If the user is already logged in
     if (req.user) {
-      res.redirect("/form");
+      res.redirect("/form2");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/form", isAuthenticated, function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/form.html"));
+  app.get("/form2", isAuthenticated, function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/form2.html"));
   });
 };

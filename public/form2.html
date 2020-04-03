@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body>
-<div class="jumbotron">
-    <h1 class="display-4">Escalation Request Form</h1>
-    <img src ="fake logo.png" alt ="fake logo" height="42" width="42">
-    <p class="lead" >Please complete the below questionaire to submit your request.</p>
-    <hr class="my-4">
-    <p>If your issue is urgent our case managers are available M-F 8:00AM- 5:00PM CST at 888-123-4567.</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Submit</a>
-  </div>
 
-  <div></div>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Escalation Request Form</h1>
+        <img src="fake logo.png" alt="fake logo" height="42" width="42">
+        <p class="lead">Please complete the below questionaire to submit your request.</p>
+        <hr class="my-4">
+        <p>If your issue is urgent our case managers are available M-F 8:00AM- 5:00PM CST at 888-123-4567.</p>
+        <a class="btn btn-primary btn-lg" id="submit" href="#" role="button">Submit</a>
+    </div>
+
+    <div></div>
     <form>
         <table>
             <tr>
@@ -24,7 +27,7 @@
                     Issue Number:
                 </td>
                 <td>
-                    <input type="text" name="">
+                    <input type="text" name="" id="issue-number">
                 </td>
             </tr>
             <tr>
@@ -32,7 +35,7 @@
                     Requestor Name:
                 </td>
                 <td>
-                    <input type="text" name="">
+                    <input type="text" name="" id="requester-name">
                 </td>
             </tr>
             <tr>
@@ -40,7 +43,7 @@
                     Client Name:
                 </td>
                 <td>
-                    <input type="text" name="">
+                    <input type="text" name="" id="client-name">
                 </td>
             </tr>
             <tr>
@@ -48,7 +51,7 @@
                     Financial Impact:
                 </td>
                 <td>
-                    <input type="text" name="">
+                    <input type="text" name="" id="financial-impact">
                 </td>
             </tr>
             <tr>
@@ -56,7 +59,7 @@
                     Escaltion Analyst:
                 </td>
                 <td>
-                    <input type="text" name="">
+                    <input type="text" name="" id="escalation-analyst">
                 </td>
             </tr>
             <tr>
@@ -64,7 +67,7 @@
                     Request Date:
                 </td>
                 <td>
-                    <input type="text" name="">
+                    <input type="text" name="" id="request-date">
                 </td>
             </tr>
             <tr>
@@ -72,50 +75,44 @@
                     Resolved Date:
                 </td>
                 <td>
-                    <input type="text" name="">
+                    <input type="text" name="" id="resolved-date">
                 </td>
             </tr>
-            
+
         </table>
     </form>
-    <form>
-        <table>
-            <tr>
-                <td>
-                    Accounting:
-                </td>
-                <td>
-                    <input type="checkbox" name="">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Contracts:
-                </td>
-                <td>
-                    <input type="checkbox" name="">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Pricing:
-                </td>
-                <td>
-                    <input type="checkbox" name="">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Sales:
-                </td>
-                <td>
-                    <input type="checkbox" name="">
-                </td>
-            </tr>          
-                
-            
-        </table>
+    <form action="#">
+        <p>Department:</p>
+        <p>
+            <label>
+                <input name="group1" type="radio" value="sales" checked />
+                <span>Sales</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input name="group1" value="accounting" type="radio" />
+                <span>Accounting</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input name="group1" value="contacts" type="radio" checked />
+                <span>Contacts</span>
+            </label>
+        </p>
+        <p>
+            <label>
+                <input name="group1" value="name" type="radio" />
+                <span>Pricing</span>
+            </label>
+        </p>
     </form>
-</div>
+    </div>
 </body>
+<footer>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script src="./js/form.js"></script>
+</footer>
+
 </html>
