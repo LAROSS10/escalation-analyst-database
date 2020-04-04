@@ -27,4 +27,8 @@ module.exports = function(app) {
   app.get("/form2", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/form2.html"));
   });
+  //route to look at issues, user needs to be signed in
+  app.get("/issues", isAuthenticated, function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/issues.html"));
+  });
 };

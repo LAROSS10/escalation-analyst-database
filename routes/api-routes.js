@@ -69,10 +69,10 @@ module.exports = function(app) {
       description
     } = req.body;
     db.Case.create({
-      reqeuester: id,
+      requestor: id,
       clientName: clientName,
       financialImpact: financialImpact,
-      description: description,
+      issueDescription: description,
       department: department
     }).then(function(dbCase) {
       res.json(dbCase);
