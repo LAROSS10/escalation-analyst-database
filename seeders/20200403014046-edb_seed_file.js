@@ -8,11 +8,11 @@ module.exports = {
         {
           requestor: "John Doe",
           clientName: "Wal-Mart",
-          financialImpact: 35000.0,
-          submitDate: "2020-03-01",
-          resolveDate: "2020-03-15",
+          financialImpact: 35000.0,      
+          
           createdAt: new Date(),
           updatedAt: new Date(),
+          issueDescription: "thisis a test"
 
         }
       ]
