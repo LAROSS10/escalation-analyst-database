@@ -3,9 +3,9 @@ const Sequelize = require("sequelize");
 module.exports = function(sequelize, DataTypes) {
   let Case = sequelize.define("Case", {
     //issueNumber: DataTypes.INTEGER,
-    requestor: DataTypes.INTEGER,
+    requestor: { type: Sequelize.INTEGER, allowNull: false },
     clientName: { type: Sequelize.STRING, allowNull: false },
-    financialImpact: DataTypes.DECIMAL,
+    financialImpact: { type: Sequelize.DECIMAL },
     //submitDate: DataTypes.DATE,
     resolveDate: DataTypes.DATE,
     //sales: DataTypes.STRING,
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     //contracts: DataTypes.STRING,
     //pricing: DataTypes.STRING,
     department: { type: Sequelize.STRING, allowNull: false },
-    escalationAnalyst: DataTypes.INTEGER,
+    escalationAnalyst: { type: Sequelize.INTEGER },
     issueDescription: { type: Sequelize.TEXT, allowNull: false },
     issueStatus: { type: Sequelize.BOOLEAN, defaultValue: true }
   });

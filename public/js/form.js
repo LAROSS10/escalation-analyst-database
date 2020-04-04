@@ -26,6 +26,7 @@ $(document).ready(function() {
   //initial setting of which user is currently logged in so we know who to assign the issue to
   $.get("api/user_data").then(function(data) {
     userId = data.id;
+    console.log("User ID: ", userId);
   });
   //event listeners
   //=====================================
@@ -33,14 +34,16 @@ $(document).ready(function() {
     event.preventDefault();
     //load in the user data
     const newCase = {
-      id: userId,
+      id: parseInt(userId),
       clientName: $clientName.val().trim(),
       financialImpact: $financialImpact.val().trim(),
-      description: $issueDescription.val().trim()
+      description: $issueDescription.val().trim(),
+      department: $("#department").val()
     };
 
     //call our function to post the issue to the database
     submitIssue(newCase);
+    alert("Issue submitted.");
   });
 
   //functions
@@ -51,4 +54,6 @@ $(document).ready(function() {
       console.log("issue posted: ", newCase);
     });
   }
+
+  //function to find which department is selected
 });
