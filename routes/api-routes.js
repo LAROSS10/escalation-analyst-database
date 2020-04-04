@@ -61,12 +61,12 @@ module.exports = function(app) {
   app.post("/api/case", function(req, res) {
     console.log(req.body);
     const {
-      issueNumber,
+      //issueNumber,
       requestor,
       clientName,
-      financialImpact,
-      submitDate,
-      resolveDate
+      financialImpact
+      //submitDate,
+      //resolveDate
     } = req.body;
     db.Case.create({
       issueNumber,
@@ -86,8 +86,8 @@ module.exports = function(app) {
     db.Case.update({
       issueDescription,
       issueStatus
-    }).then(function(res) {
-      res.json(res);
+    }).then(function(data) {
+      res.json(data);
     });
   });
 };

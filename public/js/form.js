@@ -9,6 +9,7 @@ $(document).ready(function() {
 
   const $clientName = $("#client-name");
   const $financialImpact = $("#financial-impact");
+  const $issueDescription = $("#issue-description");
   //const $escalationAnalyst = $("#escalation-analyst");
   //be assigned by app I think
 
@@ -33,8 +34,9 @@ $(document).ready(function() {
     //load in the user data
     const newCase = {
       id: userId,
-      clintName: $clientName.val().trim(),
-      financialImpact: $financialImpact.val().trim()
+      clientName: $clientName.val().trim(),
+      financialImpact: $financialImpact.val().trim(),
+      description: $issueDescription.val().trim()
     };
 
     //call our function to post the issue to the database
