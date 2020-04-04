@@ -66,6 +66,7 @@ module.exports = function(app) {
       clientName,
       financialImpact,
       submitDate,
+      escalationAnalyst,
       resolveDate
     } = req.body;
     db.Case.create({
@@ -74,20 +75,64 @@ module.exports = function(app) {
       clientName,
       financialImpact,
       submitDate,
+      escalationAnalyst,
       resolveDate
     }).then(function(dbCase) {
       res.json(dbCase);
     });
   });
 
-  app.put("/api/case", function(req, res) {
-    console.log(req.body);
-    const { issueDescription, issueStatus } = req.body;
-    db.Case.update({
-      issueDescription,
-      issueStatus
-    }).then(function(res) {
-      res.json(res);
+  // // PUT route for updating cases
+  // app.put("/api/case", function(req, res) {
+  //   console.log(req.body);
+  //   const { issueDescription, issueStatus } = req.body;
+  //   db.Case.update({
+  //     issueDescription,
+  //     issueStatus
+  //   }).then(function(dbCase) {
+  //     res.json(dbCase);
+  //   });
+  // });
+
+  app.delete("api/case/:id", function(req, res) {
+    db.Case.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbCase) {
+      res.json(dbCase);
     });
+  });
+
+  // this is the put route for updating cases
+  app.put("/api/case", function(req, res) {
+    const {
+      issueNumber,
+      requestor,
+      clientName,
+      financialImpact,
+      submitDate,
+      escalationAnalyst,
+      resolveDate
+    } = req.body;
+
+    db.Case.updated(
+      {
+        issueNumber,
+        requestor,
+        clientName,
+        financialImpact,
+        submitDate,
+        escalationAnalyst,
+        resolveDate
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }.then(function(dbCase) {
+        res.json(dbCase);
+      })
+    );
   });
 };

@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   let Case = sequelize.define("Case", {
-    issueNumber: DataTypes.INTEGER,
+    // issueNumber: DataTypes.INTEGER,
     requestor: DataTypes.INTEGER,
     clientName: DataTypes.STRING,
     financialImpact: DataTypes.DECIMAL,
-    submitDate: DataTypes.DATE,
+    // submitDate: DataTypes.DATE,
     resolveDate: DataTypes.DATE,
     sales: DataTypes.STRING,
     accounting: DataTypes.STRING,
@@ -12,7 +12,9 @@ module.exports = function(sequelize, DataTypes) {
     pricing: DataTypes.STRING,
     escalationAnalyst: DataTypes.STRING,
     issueDescription: DataTypes.TEXT,
-    issueStatus: DataTypes.TEXT
+    issueStatus: DataTypes.TEXT,
+    caseOpen: true,
+    department: DataTypes.STRING
   });
 
   return Case;
