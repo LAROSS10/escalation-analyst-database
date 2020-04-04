@@ -62,21 +62,18 @@ module.exports = function(app) {
     console.log(req.body);
     const {
       //issueNumber,
-      requestor,
+      id,
       clientName,
       financialImpact,
-      submitDate,
-      escalationAnalyst,
-      resolveDate
+      department,
+      description
     } = req.body;
     db.Case.create({
-      issueNumber,
-      requestor,
-      clientName,
-      financialImpact,
-      submitDate,
-      escalationAnalyst,
-      resolveDate
+      reqeuester: id,
+      clientName: clientName,
+      financialImpact: financialImpact,
+      description: description,
+      department: department
     }).then(function(dbCase) {
       res.json(dbCase);
     });
