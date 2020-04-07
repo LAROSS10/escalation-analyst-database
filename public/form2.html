@@ -7,6 +7,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel= "stylesheet" type=  "text/css" href="style.css">
+        <link rel="stylesheet" href="stylesheets/style.css">
 
     <title>Document</title>
 </head>
@@ -14,19 +15,20 @@
 <body>
     <div class="jumbotron">
         <h1 class="display-4">Escalation Request Form</h1>
-        <img src="fake logo.png" alt="fake logo" height="42" width="42">
+        <!-- <img src="fake logo.png" alt="fake logo" height="42" width="42"> -->
         <p class="lead">Please complete the below questionaire to submit your request.</p>
         <hr class="my-4">
         <p>If your issue is urgent our case managers are available M-F 8:00AM- 5:00PM CST at 888-123-4567.</p>
-        <a class="btn btn-primary btn-lg" id="submit" href="#" role="button">Submit</a>
-        <a class="btn btn-primary btn-lg" id="issues" href="/issues" role="button">Known Issues</a>
+        <!-- <a class="btn btn-primary btn-lg" id="submit" href="#" role="button">Submit</a>
+        <a class="btn btn-primary btn-lg" id="issues" href="/issues" role="button">Known Issues</a> -->
     </div>
 
-    <div></div>
-    <form >
+
+<div class="container">
+    <form>
         <table>
             <tr>
-                <td>
+                <td id="clientName">
                     Client Name:
                 </td>
                 <td>
@@ -34,7 +36,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td id="finacialImpact">
                     Financial Impact:
                 </td>
                 <td>
@@ -42,17 +44,16 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td id="issueDescription">
                     Issue Description:
                 </td>
                 <td>
                     <textarea type="text" name="" id="issue-description"></textarea>
                 </td>
             </tr>
-
         </table>
-    </form>
-    <form action="#">
+    </form>   
+    <form action="#" id="dropDown">
         <p>Department:</p> 
 
           <select id="department" name="department">
@@ -62,8 +63,15 @@
             <option value="pricing">Pricing</option>
           </select>
     </form>
-    </div>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" id="submit" href="#" role="button">Submit</a>
+    <a class="btn btn-primary btn-lg" id="issues" href="/issues" role="button">Known Issues</a>
+     
+ </div>
+
 </body>
+
+
 <footer>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <script src="./js/form.js"></script>
