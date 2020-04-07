@@ -1,8 +1,8 @@
 //document ready function
 $(document).ready(function() {
   //variable and pointers declarations
-  const $unresolved = $(".first-box");
-  const $resolved = $(".second-box");
+  // const $unresolved = $(".first-box");
+  // const $resolved = $(".second-box");
   const issues = [];
 
   //initialize all our issues
