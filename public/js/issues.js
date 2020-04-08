@@ -4,6 +4,13 @@ $(document).ready(function() {
   const $unresolved = $(".first-box");
   const $resolved = $(".second-box");
   const issues = [];
+  let userId = null;
+
+  //get who is logged in
+  $.get("api/user_data").then(function(data) {
+    userId = data.id;
+    console.log("User ID: ", userId);
+  });
 
   //initialize all our issues
   $.get("api/case").then(function(data) {
@@ -35,9 +42,9 @@ $(document).ready(function() {
     postToPage($resolved, closedIssues);
   });
 
-  //our post to page function, takes in a list to post and a location to post it in
+  //our post to page function, takes in a list to post and a locate to post it in
   //requires bootstrap and jquery to work correctly
-  function postToPage(location, list) {
+  function postToPage(locate, list) {
     //main loop for our posting info
     for (i = 0; i < list.length; i++) {
       const $card = $("<div>");
@@ -61,8 +68,57 @@ $(document).ready(function() {
       $text.text(list[i].issueDescription);
       $card.append($text);
 
-      //add the card to the location passed
-      location.append($card);
+      //resolve/reopen button
+      //will move the issue to the resolved side, or the unresolved side
+      const $button = $("<button>");
+      $button.addClass("btn btn-sml");
+      //check to see if resolved or unresolved
+      if (list[i].issueStatus === true) {
+        $button.addClass("btn-primary");
+        $button.text("Resolve");
+        $button.attr("data-status", true);
+      } else {
+        $button.addClass("btn-danger");
+        $button.text("Re-open");
+        $button.attr("data-status", false);
+      }
+      $button.attr("id", list[i].id);
+      //add the click event to our new button
+      $button.on("click", function(event) {
+        event.preventDefault();
+        let newUpdate;
+        //update our new case after an if statement
+        console.log($(this).data("status"));
+        if ($(this).data("status")) {
+          newUpdate = {
+            escalationAnalyst: parseInt(userId),
+            issueStatus: false,
+            id: this.id
+          };
+        } else {
+          newUpdate = {
+            escalationAnalyst: parseInt(userId),
+            issueStatus: true,
+            id: this.id
+          };
+        }
+
+        console.log(newUpdate);
+        //call the update api
+        $.ajax({
+          url: "/api/case/" + this.id,
+          type: "PUT",
+          data: newUpdate
+        }).then(function() {
+          console.log("Updated");
+          location.reload();
+        });
+      });
+      //add our button
+      $card.append($button);
+
+      //add the card to the locate passed
+      locate.append($card);
     }
   }
 });
