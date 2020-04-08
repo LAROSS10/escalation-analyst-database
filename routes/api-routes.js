@@ -103,25 +103,12 @@ module.exports = function(app) {
 
   // this is the put route for updating cases
   app.put("/api/case", function(req, res) {
-    const {
-      issueNumber,
-      requestor,
-      clientName,
-      financialImpact,
-      submitDate,
-      escalationAnalyst,
-      resolveDate
-    } = req.body;
+    const { issueStatus, escalationAnalyst } = req.body;
 
     db.Case.updated(
       {
-        issueNumber,
-        requestor,
-        clientName,
-        financialImpact,
-        submitDate,
-        escalationAnalyst,
-        resolveDate
+        issueStatus,
+        escalationAnalyst
       },
       {
         where: {
