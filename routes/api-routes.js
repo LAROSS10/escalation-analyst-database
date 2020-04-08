@@ -102,21 +102,21 @@ module.exports = function(app) {
   });
 
   // this is the put route for updating cases
-  app.put("/api/case", function(req, res) {
-    const { issueStatus, escalationAnalyst } = req.body;
+  app.put("/api/case/:caseId", function(req, res) {
+    console.log("Update received: ", req.body);
 
-    db.Case.updated(
+    db.Case.update(
       {
-        issueStatus,
-        escalationAnalyst
+        issueStatus: req.body.issueStatus,
+        escalationAnalyst: req.body.escalationAnalyst
       },
       {
         where: {
-          id: req.body.id
+          id: req.params.caseId
         }
-      }.then(function(dbCase) {
-        res.json(dbCase);
-      })
-    );
+      }
+    ).then(function(dbCase) {
+      res.json(dbCase);
+    });
   });
 };
